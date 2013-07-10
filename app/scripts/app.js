@@ -1,13 +1,16 @@
 'use strict';
 
-angular.module('pdfTutApp', ['ngResource'])
+var app = angular.module('spangular', ['ngResource'])
     .config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
+            redirectTo: '/search'
         })
-        .otherwise({
-            redirectTo: '/'
-        });
+        .when( '/search', {
+            redirectTo: '/search/list'
+        })
+        .when('/search/list', {
+            controller: "ListCtrl",
+            templateUrl: "views/controllers/search/list.html"
+        })
     });

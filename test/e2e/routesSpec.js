@@ -3,8 +3,13 @@ describe("E2E: Testing Routes", function() {
         browser().navigateTo('/');
     });
 
-    it('should have the right text', function() {
-        expect(element('h1').text()).toMatch(/'Allo, 'Allo!/);
-    });
+    describe("List Route:", function() {
+        it('should redirect to the search route upon entering the index route', function() {
+            expect(browser().location().url()).toBe('/search/list');
+        });
 
+        it('should have the right text on the page', function () {
+            expect(element('.intro').text()).toMatch(/List/)
+        });
+    });
 });
